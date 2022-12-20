@@ -1,0 +1,13 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const Functions_1 = require("../Controller/Functions");
+const route = (0, express_1.Router)();
+route.route("/getall").get(Functions_1.getAllData);
+route.route("/post").post(Functions_1.postToDoList);
+route.route("/deleteall").delete(Functions_1.deletAllToDoList);
+route.route("/delete/:id").delete(Functions_1.deletOneToList);
+route.route("/getone").get(Functions_1.getOneTodoList);
+route.route("/update/:id").patch(Functions_1.UpdateToDoList);
+route.route("/getone/:id").get(Functions_1.getOneData);
+exports.default = route;
