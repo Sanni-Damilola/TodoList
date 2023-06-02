@@ -1,14 +1,12 @@
 import mongoose from "mongoose";
 
-const url: string = "mongodb://localhost/todolist";
-const cloudurl: string =
-  "mongodb+srv://sannidatabase:sannidatabase@cluster0.zh68ie9.mongodb.net/?retryWrites=true&w=majority";
+const url: string = "mongodb://127.0.0.1:27017/todoLIST";
 
-mongoose.connect(cloudurl);
-mongoose.connection
-  .on("open", () => {
-    console.log("DB connected on", cloudurl);
-  })
-  .once("error", (err) => {
-    console.log("DB error", err);
-  });
+export const config = async () => {
+  try {
+    const connect = await mongoose.connect(url);
+    console.log("connected to database");
+  } catch (error) {
+    console.log("An error occured dababase", error);
+  }
+};

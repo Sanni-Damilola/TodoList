@@ -1,19 +1,18 @@
 import express, { Response, Request, Application } from "express";
 import cors from "cors";
 import Route from "../Routes/route";
+import { config } from "../Config/config";
 
 const app: Application = express();
 app.use(express.json());
-const port: number | string = process.env.port || 2001;
-require("../Config/config");
-
+config();
+const port: number = 2001;
 app.all("/", (req: Request, res: Response): Response => {
   return res.status(200).json({
     message: "I'm up",
   });
 });
 
-app.use(cors());
 app.use("/api", Route);
 
 app.listen(port, () => {

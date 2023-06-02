@@ -20,14 +20,11 @@ const getAllData = async (req: Request, res: Response): Promise<Response> => {
 // Post Data
 const postToDoList = async (req: Request, res: Response): Promise<Response> => {
   try {
-    const { Title, ShortDescription } = req.body;
-    const postaList = await usedata.create(
-      {
-        Title,
-        ShortDescription,
-      },
-      { timestamps: true }
-    );
+    const { Title, shortDescription } = req.body;
+    const postaList = await usedata.create({
+      Title,
+      shortDescription,
+    });
     return res.status(201).json({
       message: "Successfully posted Your To Do List",
       data: postaList,

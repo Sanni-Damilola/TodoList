@@ -19,7 +19,7 @@ const Schema = new mongoose.Schema(
       type: String,
       default: "Not Completed",
     },
-    ShortDiscription: {
+    shortDescription: {
       type: String,
     },
   },
